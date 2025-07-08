@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ticket Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffffdd;
+      padding: 40px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+      font-size: 28px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 15px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input, select {
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      transition: 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #ff914d;
+      outline: none;
+      box-shadow: 0 0 5px #ffc10799;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 14px;
+      background: linear-gradient(to right, #ff512f, #dd2476);
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #dd2476, #ff512f);
+    }
+
+    #confirmation {
+      margin-top: 25px;
+      background-color: #e3fcec;
+      color: #2e7d32;
+      border-left: 5px solid #34c759;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎫 Book Your Event Ticket</h1>
+    <form id="bookingForm">
+      <label for="name">👤 Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="event">🎉 Select Event</label>
+      <select id="event" name="event" required>
+        <option value="">-- Choose an Event --</option>
+        <option value="Music Concert">🎵 Music Concert</option>
+        <option value="Theatre Play">🎭 Theatre Play</option>
+        <option value="Movie Show">🎬 Movie Show</option>
+      </select>
+
+      <label for="tickets">🎟️ Number of Tickets</label>
+      <input type="number" id="tickets" name="tickets" min="1" max="10" placeholder="1-10" required>
+
+      <button type="submit">🚀 Book Now</button>
+    </form>
+
+    <div id="confirmation"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("bookingForm");
+    const confirmation = document.getElementById("confirmation");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const name = form.name.value;
+      const selectedEvent = form.event.value;
+      const tickets = form.tickets.value;
+
+      confirmation.innerHTML = `
+        <p>✅ Thank you, <strong>${name}</strong>!<br>
+        You have booked <strong>${tickets}</strong> ticket(s) for <strong>${selectedEvent}</strong>.</p>`;
+      form.reset();
+    });
+  </script>
+</body>
+</html
